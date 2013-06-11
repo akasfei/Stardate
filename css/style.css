@@ -32,3 +32,23 @@ header > h1 > span {
 #stardate {
   font-family: "source-code", courier;
 }
+
+section {
+  margin-top: 20px;
+}
+
+label {
+  display: inline-block;
+  font-size: 36px;
+  vertical-align: middle;
+}
+
+input {
+  font-family: "source-code", courier;
+  width: 200px;
+  height: 40px;
+  padding: 4px 8px;
+  margin: 0 10px 10px 10px;
+  font-size: 20px;
+  vertical-align: top;
+}

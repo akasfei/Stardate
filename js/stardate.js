@@ -9,4 +9,4 @@ var update_star_date = function() {
   stardate_container.innerHTML = (stardate_part1 < 999 ? '0' + stardate_part1.toString() : stardate_part1 ) + '.' + stardate_part2.toString(16);
 }
 update_star_date();
-setInterval(update_star_date, 8640000*1.6);
+setInterval(update_star_date, 8640000*/3.2);
