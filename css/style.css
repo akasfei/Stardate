@@ -29,8 +29,22 @@ header > h1 > span {
   font-weight: bold;
 }
 
-#stardate {
+h1#stardate {
   font-family: "source-code", courier;
+}
+
+#stardate-s {
+  display: inline-block;
+}
+
+#stardate-s:first-letter {
+  font-size: 40px;
+  color: #fff;
+}
+
+h1#stardate > span {
+  font-size: 16px;
+  color: rgba(255,255,255,.5);
 }
 
 section {
