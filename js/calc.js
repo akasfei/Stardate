@@ -8,7 +8,7 @@ var set_star_date = function(date) {
   var startDate = new Date(Date.UTC(2011, 5, 18, 0, 0, 0, 0));
   var currentDate;
   if (date)
-    currentDate = new Date(Date.UTC(date));
+    currentDate = new Date(date);
   else
     currentDate = new Date();
   var stardate_part1 = parseInt((currentDate.getTime() - startDate.getTime())/86400000);
