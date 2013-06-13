@@ -52,6 +52,7 @@ section {
 }
 
 label {
+  width: 180px;
   display: inline-block;
   font-size: 36px;
   vertical-align: middle;

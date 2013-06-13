@@ -5,14 +5,14 @@ var pad = function (num) {
 }
 
 var set_star_date = function(date) {
-  var startDate = new Date(2011, 5, 18, 0, 0, 0, 0);
+  var startDate = new Date(Date.UTC(2011, 5, 18, 0, 0, 0, 0));
   var currentDate;
   if (date)
-    currentDate = new Date(date);
+    currentDate = new Date(Date.UTC(date));
   else
     currentDate = new Date();
   var stardate_part1 = parseInt((currentDate.getTime() - startDate.getTime())/86400000);
-  var stardate_part2 = parseInt((currentDate.getHours()*60*60*1000 + currentDate.getMinutes()*60*1000 + currentDate.getSeconds()*1000 + currentDate.getMilliseconds())/8640000*1.6)
+  var stardate_part2 = parseInt((currentDate.getUTCHours()*60*60*1000 + currentDate.getUTCMinutes()*60*1000 + currentDate.getUTCSeconds()*1000 + currentDate.getUTCMilliseconds())/8640000*1.6);
   //stardate_part1 = decToHex(stardate_part1);
   //stardate_part2 = decToHex(stardate_part2);
   $('#stardate').val((stardate_part1 < 999 ? '0' + stardate_part1.toString() : stardate_part1 ) + '.' + stardate_part2.toString(16))
@@ -20,7 +20,7 @@ var set_star_date = function(date) {
 
 var update_date = function() {
   var stardate = $('#stardate').val().split('.');
-  var startDate = new Date(2011, 5, 18, 0, 0, 0, 0);
+  var startDate = new Date(Date.UTC(2011, 5, 18, 0, 0, 0, 0));
   var time = isNaN(stardate[1]) ? stardate[1].charCodeAt(0) - 87: parseInt(stardate[1]);
   var thisDate = new Date(startDate.getTime() + stardate[0]*86400000 + time*90*60*1000);
   var dateval = thisDate.getFullYear().toString() + '-' + pad(thisDate.getMonth() + 1) + '-' + pad(thisDate.getDate());
