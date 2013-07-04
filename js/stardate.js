@@ -6,7 +6,8 @@ var update_star_date = function() {
   //stardate_part1 = decToHex(stardate_part1);
   //stardate_part2 = decToHex(stardate_part2);
   var stardate_container = document.getElementById('stardate');
-  stardate_container.innerHTML = (stardate_part1 < 999 ? '0' + stardate_part1.toString() : stardate_part1 ) + '.<span id="stardate-s">' + stardate_part2.toString(16) + '</span>';
+  stardate_part2 = stardate_part2.toString(16);
+  stardate_container.innerHTML = (stardate_part1 < 999 ? '0' + stardate_part1.toString() : stardate_part1 ) + '.<span id="stardate-s">' + ( stardate_part2.length > 3 ? stardate_part2 : stardate_part2.length > 2 ? '0' + stardate_part2 : stardate_part2.length > 1 ? '00' + stardate_part2 : '000' + stardate_part2 ) + '</span>';
 }
 update_star_date();
 setInterval(update_star_date, 86400000/65536);
