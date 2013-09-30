@@ -2,18 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SFEI Systems - Stardate</title>
+    <title>Stardate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+body {
+  background: #345;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  color: #fff;
+}
+.stardate {
+  padding: 20px;
+  margin: 20px;
+}
+.adv {
+  font-weight: lighter;
+  margin: 10px;
+  padding: .25em 1em;
+  color: #333;
+  background: #fff;
+  font-size: 16px;
+  text-decoration: none;
+}
+.adv:hover, .adv:active, .adv:focus {
+  color: #345;
+  background-color: #bbb;
+  text-decoration: none;
+}
+#stardate-h {
+  display: inline-block;
+  text-align: right;
+  font-weight: lighter;
+  font-size: 48px;
+}
+#stardate-h:after {
+  content: '.';
+}
+#stardate-s {
+  display: inline-block;
+  text-align: left;
+  width: 3em;
+  font-size: 24px;
+  color: #888;
+  color: rgba(255,255,255,.5);
+}
+#stardate-s:first-letter {
+  font-size: 36px;
+  color: #ccc;
+}
+    </style>
   </head>
   <body>
-    <header>
-      <h1>the current <span>STARDATE</span> is:</h1>
-    </header>
-    <section>
-      <h1 id="stardate"></h1>
-    </section>
+    <div class="stardate"><span id="stardate-h"></span><span id="stardate-s"></span></div>
+    <a class="adv" href="#"  onclick="cpy()">Copy to Clipboard</a><a class="adv" href="advanced.html">Advanced</a>
   </body>
-  <script src="js/stardate.js"></script>
+    <script>
+function Stardate(conf) {
+  if (typeof conf !== 'undefined' && typeof conf.origin !== 'undefined'){
+    this.origin = conf.origin;
+  }
+  return this;
+}
+
+Stardate.prototype.origin = new Date(Date.UTC(2011, 5, 18, 0, 0, 0, 0));
+
+Stardate.prototype.update = function() {
+  var startDate = new Date(Date.UTC(2011, 5, 18, 0, 0, 0, 0));
+  var currentDate = new Date();
+  this.p1 = parseInt((currentDate.getTime() - this.origin.getTime())/86400000).toString();
+  this.p2 = parseInt((currentDate.getUTCHours()*60*60*1000 + currentDate.getUTCMinutes()*60*1000 + currentDate.getUTCSeconds()*1000 + currentDate.getUTCMilliseconds())/8640*6.5536).toString(16);
+  this.p1 = this.p1.length > 3 ? this.p1 : this.p1.length > 2 ? '0' + this.p1 : this.p1.length > 1 ? '00' + this.p1 : '000' + this.p1;
+  this.p2 = this.p2.length > 3 ? this.p2 : this.p2.length > 2 ? '0' + this.p2 : this.p2.length > 1 ? '00' + this.p2 : '000' + this.p2;
+  return this;
+}
+
+Stardate.prototype.set = function() {
+  this.update();
+  var stardate_h = document.getElementById('stardate-h');
+  var stardate_s = document.getElementById('stardate-s');
+  stardate_h.innerHTML = this.p1;
+  stardate_s.innerHTML = this.p2;
+  return this;
+}
+
+var SD = new Stardate().set();
+setInterval(function() {SD.set();}, 86400000/65536);
+
+function cpy() {
+  window.prompt('Copy the current StarDate here:', SD.p1 + '.' + SD.p2);
+}
+
+
+  </script>
 </html>
