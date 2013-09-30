@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header>
-      <h1>Stardate - Actual Date calculator</h1>
-    </header>
     <section>
-      <label for="stardate">Stardate</label>
-      <input id="stardate" type="text" />
-      <br>
+      <div class="stardate-header">Current StarDate:</div>
+      <div class="stardate"><span id="stardate-h"></span><span id="stardate-s"></span></div>
+    </section>
+    <section>
       <label for="actual-date">Date</label>
       <input id="actual-date" type="date"/>
       <br>
       <label for="actual-time">Time</label>
       <input id="actual-time" type="time"/>
+      <br>
+      <label for="stardate">Stardate</label>
+      <input id="stardate" type="text" />
     </section>
   </body>
+  <script src="js/stardate.js"></script>
   <script src="js/jquery-2.0.2.min.js"></script>
   <script src="js/calc.js"></script>
 </html>

@@ -20,31 +20,33 @@ html,body {
   text-align: center;
 }
 
-h1 {
-  font-size: 48px;
-  font-weight: normal;
+.stardate-header {
+  font-size: 36px;
 }
 
 header > h1 > span {
   font-weight: bold;
 }
 
-h1#stardate {
-  font-family: "source-code", courier;
+#stardate-h {
+  display: inline-block;
+  text-align: right;
+  font-size: 48px;
 }
-
+#stardate-h:after {
+  content: '.';
+}
 #stardate-s {
   display: inline-block;
-}
-
-#stardate-s:first-letter {
-  font-size: 40px;
-  color: #fff;
-}
-
-h1#stardate > span {
-  font-size: 16px;
+  text-align: left;
+  font-family: "source-code", courier, monospace;
+  font-size: 24px;
+  color: #888;
   color: rgba(255,255,255,.5);
+}
+#stardate-s:first-letter {
+  font-size: 36px;
+  color: #ccc;
 }
 
 section {
@@ -59,7 +61,7 @@ label {
 }
 
 input {
-  font-family: "source-code", courier;
+  font-family: "source-code", courier, monospace;
   width: 200px;
   height: 40px;
   padding: 4px 8px;
